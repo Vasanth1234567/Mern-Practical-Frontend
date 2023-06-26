@@ -1,24 +1,24 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import FileUploadComponent from './components/FileUploadComponent/FileUploadComponent';
+import SongGalleryComponent from './components/SongGalleryComponent/SongGalleryComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='container'>
+        <h1>Music Player App</h1>
+
+        <nav className='nav-menu'>
+          <Link to='/'>Home</Link>
+          <Link to='/admin/upload'>Add Songs</Link>
+        </nav>
+        <Routes>
+          <Route exact path='/' element={<SongGalleryComponent />} />
+          <Route path='/admin/upload' element={<FileUploadComponent />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
